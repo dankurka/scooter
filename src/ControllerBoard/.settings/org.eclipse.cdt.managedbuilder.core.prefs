@@ -1,0 +1,8 @@
+#Fri Nov 10 18:46:20 CET 2006
+cdt.managedbuild.config.gnu.exe.debug.841194586/internalBuilder/enabled=false
+cdt.managedbuild.config.gnu.exe.debug.841194586/internalBuilder/ignoreErr=true
+eclipse.preferences.version=1
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.exe.debug.841194586=<?xml version\='1.0'?>\n<environment>\n    <variable name\='CPATH' operation\='remove'/>\n    <variable name\='C_INCLUDE_PATH' operation\='remove'/>\n</environment>
+environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.exe.debug.841194586=<?xml version\='1.0'?>\n<environment>\n    <variable name\='LIBRARY_PATH' operation\='remove'/>\n</environment>
+environment/project=<?xml version\="1.0" encoding\="UTF-8"?>\n<environment/>\n
+environment/project/cdt.managedbuild.config.gnu.exe.debug.841194586=<?xml version\="1.0" encoding\="UTF-8"?>\n<environment/>\n

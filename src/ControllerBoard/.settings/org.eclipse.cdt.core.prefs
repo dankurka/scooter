@@ -1,0 +1,5 @@
+#Wed Oct 31 13:43:34 CET 2007
+eclipse.preferences.version=1
+indexer/indexerId=org.eclipse.cdt.core.domsourceindexer
+indexerId=org.eclipse.cdt.core.domsourceindexer
+instance/org.eclipse.core.net/org.eclipse.core.net.hasMigrated=true
