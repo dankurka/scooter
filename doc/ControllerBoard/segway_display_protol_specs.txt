@@ -1,0 +1,140 @@
+Titel: Balancing Scooter, Display protocol specification
+Version: 1.1
+Date: 19. Oct. 2007
+
+------------
+Revision History:
+
+1.1 - added channel for beeper
+
+
+------------
+
+
+----------------------------------------
+1) Physical specification
+ 
+ The protocol is transmitted using a asychronous serial RS232-Connection (+12V/-12V level). 
+ Baudrate is 57600 baud, 8 databits, 1 stopbit, no parity.
+ 
+----------------------------------------
+2) Protocol data unit (PDU) Desciption
+ 
+ <SOT><COMMAND><SEP><CHANNEL><SEP><VALUE><EOT>
+ 
+ *<SOT>: Character "<", ASCII 60,  Start of text, protocol resyncs to that character. Length: 1 byte
+ 
+ *<Command>: Command to perform, see description below. Length: 1 byte
+ 
+ *<SEP>: Seperation character between command and channel, channel and value. Character " ", ASCII 32
+ 
+ *<Channel>: Source,Destination Channel. Describes the data sink or source, 
+   eg. a sensor value or a motor PWM value. The channel also determins
+   the data format like decimal value or text string. Length: 3 byte
+ 
+ * <VALUE>:Value of the channel read or written to. Format determined by channel. Length: min. 1 to max 32 byte. When read command is set, this has to be '-'
+ 
+ * <EOT>: End of Text/PDU, Character "]", ASCII 93
+
+ 
+ Example of a PDU:
+ 
+ <S 023 243]
+ (set channel 23 to 243)
+ 
+ <R 023 -]
+ (read channel 23 )
+ 
+ Answer:
+ <S 023 243]
+ (Status of channel 23  is 243)
+ 
+
+------------------------
+ 3)Command description
+ 
+ 'W' -  => Write/Set command. Set channel to value specified. This is not answered. 
+       For success control, the channel must be polled again.
+ 
+ 'R' -  => Read/Get command. Request current channel status. Answer is the current status of the
+ 	channel. The datafiel in the PDU must be set to '-' (ASCII 45).
+ 
+ 'S' -  <= Status command. The current status/value of a channel. This is only send as a answer to either
+ 	the read or write command or as an alarm indicator.
+ 
+ 
+----------------------------------------
+4) Data channel description
+
+The channels are sortet by functional groups. 
+
+Format: <number> - <description>, <value range>, <readonly or readwrite>
+
+Channel 1-20   : enige/movement system
+
+1	- Motor 1 PWM duty value in percent, 0-100, readonly
+2	- Motor 1 direction, 0 (forward) or 1 (backward), readonly
+3	- Motor 1 status: enabled or disabled, 0-1, readonly
+4	- Motor 2 PWM duty value in percent, 0-100, readonly
+5	- Motor 2 direction, 0 or 1, readonly
+6	- Motor 2 status: enabled 1 or disabled 0, 0-1, readonly
+
+Channel 21-40  : sensor system
+21	- current value of acceleration sensor (last ringbuffer entry), 0-??, readonly
+22	- current value of gyroscope 1 sensor (last ringbuffer entry), -65000 - +65000, readonly
+23	- current value of gyroscope 2 sensor (last ringbuffer entry), -65000 - +65000, readonly
+24	- current value of gyroscope 1 temperature sensor,  -65000 - +65000, readonly
+25	- current value of gyroscope 2 temperature sensor,  -65000 - +65000, readonly
+26	- current value of ADC Channel  1,  0-1024, readonly
+27	- current value of ADC Channel  2,  0-1024, readonly
+28	- current value of ADC Channel  3,  0-1024, readonly
+29	- current value of ADC Channel  4,  0-1024, readonly
+30	- current value of ADC Channel  5,  0-1024, readonly
+31	- current value of ADC Channel  6,  0-1024, readonly
+32	- current value of ADC Channel  7,  0-1024, readonly
+33	- current value of ADC Channel  8,  0-1024, readonly
+34	- current value of ADC Channel  9,  0-1024, readonly
+35	- current value of ADC Channel 10,  0-1024, readonly
+
+
+Channel 41-60  : control algorithm control
+41	- steering zero point, 0-1024, readwrite
+42	- gyroscope 1 zero value, -65000 to +65000
+43	- gyro-to-omega factor, 0.0 - 1.0, readwrite
+44	- accl-to-degree factor, 0.0 - 2000.0, readwrite
+45	- steering responsivness, 0.0 - 1.0, readwrite
+46	- max steering lock, 0.0 - 1.0, readwrite
+47	- k_angle, 0.0 - 100.0, readwrite
+48	- k_omega, 0.0 - 1.0, readwrite
+49	- k_corr_factor, 0.0 - 1.0, readwrite
+50	- set_point, -1.0 - 1.0, readwrite
+51	- cur_speed_factor, 0.0 - 10.0
+
+Channel 60-70  : control algorithm status
+
+70	- cur_speed
+71	- phi
+
+Channel 71-90  : peripheral components
+71	- front LEDs on/off, 0-1, readwrite
+71	- front LED dutycycle, 0-255, readwrite
+73	- front LEDs on/off
+74	- onboard Debug LED1 on,off,toggle, 0(off)-1(on)-2(toggle), readwrite
+75	- onboard Debug LED2 on,off,toggle, 0(off)-1(on)-2(toggle), readwrite
+76	- onboard Debug LED2 on,off,toggle, 0(off)-1(on)-2(toggle), readwrite
+77	- status of onboard button 1, 0(not pressed)-1(pressed), readonly
+78	- status of onboard button 2, 0(not pressed)-1(pressed), readonly
+79	- system beeper (1 = on, 0 = off, 2 = short beep )
+
+Channel 91-110 : system
+91	- firmware version, <string format tbd>, readonly
+92	- serial number, 1-3, readonly
+93	- systime_millisec, 0-999, readonly
+94	- systime_sec, 0-60, readonly
+95	- systime_min, 0-60, readonly
+96	- systime_h, 0-24, readonly
+
+
+Channel 120-255 : reserved
+
+
