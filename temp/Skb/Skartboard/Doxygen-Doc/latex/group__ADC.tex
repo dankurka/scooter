@@ -1,0 +1,51 @@
+\section{Routines}
+\label{group__ADC}\index{Routines@{Routines}}
+Routines for controlling the onboard Analog-Digital converter.  
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \textbf{init\_\-adc} ()\label{group__ADC_g2d55adaff96e84bf99460f7c9d24f7a4}
+
+\item 
+void {\bf adc\_\-sel\_\-channel} (char channel)
+\item 
+unsigned int {\bf read\_\-adc} ()
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Routines for controlling the onboard Analog-Digital converter. 
+
+
+
+\begin{Code}\begin{verbatim} #include <adc.h> 
+\end{verbatim}\end{Code}
+
+
+
+This Routines are for initializing the ADC and selecting the analog input channel of the multiplexer. After a channel has be activated, a single conversion may be performed by calling \doxyref{read\_\-adc()}{p.}{group__ADC_g44aa940d70eb32e3293a0824943927f8}.
+
+\begin{Desc}
+\item[Note:]Based on Atmel Datasheet for Atmega128, Nov. 2006 \end{Desc}
+\begin{Desc}
+\item[Author:]Rainer Ostendorf \end{Desc}
+
+
+\subsection{Function Documentation}
+\index{ADC@{ADC}!adc_sel_channel@{adc\_\-sel\_\-channel}}
+\index{adc_sel_channel@{adc\_\-sel\_\-channel}!ADC@{ADC}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void adc\_\-sel\_\-channel (char {\em channel})}\label{group__ADC_g2c7a22b5e74fbc930e5e4c6a0633b3f3}
+
+
+select the active ADC-Channel from input multiplexer \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em channel}]ADC-Channel to read, 0-7 \end{description}
+\end{Desc}
+\index{ADC@{ADC}!read_adc@{read\_\-adc}}
+\index{read_adc@{read\_\-adc}!ADC@{ADC}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}unsigned int read\_\-adc ()}\label{group__ADC_g44aa940d70eb32e3293a0824943927f8}
+
+
+start an ADConversion, busy-wait for the result and return it a conversion will last approx. 12us (calculated, not measured, TODO) \begin{Desc}
+\item[Returns:]the conversion result \end{Desc}

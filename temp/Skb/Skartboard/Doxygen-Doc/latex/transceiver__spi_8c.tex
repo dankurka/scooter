@@ -1,0 +1,25 @@
+\section{transceiver\_\-spi.c File Reference}
+\label{transceiver__spi_8c}\index{transceiver_spi.c@{transceiver\_\-spi.c}}
+{\tt \#include $<$avr/io.h$>$}\par
+{\tt \#include $<$inttypes.h$>$}\par
+{\tt \#include \char`\"{}transceiver\_\-spi.h\char`\"{}}\par
+{\tt \#include \char`\"{}gyro\_\-spi.h\char`\"{}}\par
+
+
+Include dependency graph for transceiver\_\-spi.c:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=195pt]{transceiver__spi_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void {\bf write\_\-to\_\-spi} (uint8\_\-t spi\_\-adress, uint16\_\-t spi\_\-data)
+\item 
+uint8\_\-t {\bf read\_\-from\_\-spi} (uint8\_\-t spi\_\-addr)
+\item 
+void {\bf write\_\-to\_\-ram} (uint8\_\-t spi\_\-addr, {\bf tx\_\-packet\_\-t} $\ast$tx\_\-packet)
+\item 
+uint8\_\-t {\bf read\_\-from\_\-ram} (uint8\_\-t spi\_\-addr, {\bf rx\_\-packet\_\-t} $\ast$rx\_\-packet)
+\end{CompactItemize}

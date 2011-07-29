@@ -1,0 +1,16 @@
+\section{Stabilization control}
+\label{group__ro__stabilizer}\index{Stabilization control@{Stabilization control}}
+Controller code for stabilizing the platform.  
+
+
+\begin{Code}\begin{verbatim} #include <stabilizer.h> 
+\end{verbatim}\end{Code}
+
+
+
+This file contains the controller algorithm for stabilizing the platform by calculating the current position of the device and setting the PWM-Signals of the motors accordingly, so the platform is in balance.
+
+\begin{Desc}
+\item[Note:]Based on Atmel Datasheet for Atmega128, Nov. 2006 \end{Desc}
+\begin{Desc}
+\item[Author:]Original C167 code by segway team, adaption to AVR by Rainer Ostendorf \end{Desc}

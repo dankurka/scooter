@@ -1,0 +1,45 @@
+For information, this are the fuse settings of the controller:
+
+
+
+avrdude -p atmega128 -P /dev/parport0 -c stk200 -t
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude: Device signature = 0x1e9702
+avrdude> read lfuse
+>>> read lfuse
+0000  ef                                                |ï               |
+
+avrdude> read hfuse
+>>> read hfuse
+0000  c8                                                |È               |
+
+
+avrdude> read efuse
+>>> read efuse
+0000  ff    
+
+
+
+This is how to write them:
+
+avrdude> write lfuse 0 0xef
+>>> write lfuse 0 0xef
+
+avrdude> write hfuse 0 0xc8
+>>> write hfuse 0 0xc8
+
+
+avrdude write efuse 0 0xff
+>>> write efuse 0 0xff
+
+avrdude> read efuse
+>>> read efuse
+0000  ff                                                |.               |
+
+
+
+                                

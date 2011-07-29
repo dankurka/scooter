@@ -1,0 +1,277 @@
+\section{SPI for Gyros}
+\label{group__ro__spi}\index{SPI for Gyros@{SPI for Gyros}}
+Code for accessing the Gyroscopes.  
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf CS\_\-GYRO1}~0
+\item 
+\#define {\bf CS\_\-GYRO2}~2
+\item 
+\#define {\bf ACC\_\-HB}~0x83
+\item 
+\#define {\bf ACC\_\-LB}~0x00
+\item 
+\#define {\bf TEMP\_\-HB}~0x87
+\item 
+\#define {\bf TEMP\_\-LB}~0x00
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef enum {\bf gyro\_\-fsm\_\-state\_\-enum} {\bf gyro\_\-fsm\_\-state}
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum {\bf gyro\_\-fsm\_\-state\_\-enum} \{ \par
+{\bf first\_\-run}, 
+{\bf g1\_\-hacc}, 
+{\bf g1\_\-lacc}, 
+{\bf g2\_\-hacc}, 
+\par
+{\bf g2\_\-lacc}, 
+{\bf g1\_\-htmp}, 
+{\bf g1\_\-ltmp}, 
+{\bf g2\_\-htmp}, 
+\par
+{\bf g2\_\-ltmp}
+ \}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void {\bf init\_\-spi\_\-gyro} (uint8\_\-t interrupt\_\-mode)
+\item 
+void {\bf spi\_\-cs} (uint8\_\-t chip)
+\item 
+uint8\_\-t {\bf spi\_\-write\_\-8} (uint8\_\-t data)
+\begin{CompactList}\small\item\em Transfer 1 Byte given in data via the SPI return the 1 Byte sampled during transfer. \item\end{CompactList}\item 
+uint8\_\-t {\bf spi\_\-write\_\-8\_\-nocs} (uint8\_\-t data)
+\item 
+uint16\_\-t {\bf spi\_\-write\_\-16} (uint16\_\-t data)
+\begin{CompactList}\small\item\em Tranfer 2 Bytes given in data via the SPI, return the 2 Bytes sampled during transfer. \item\end{CompactList}\item 
+uint16\_\-t {\bf spi\_\-write\_\-16\_\-nocs} (uint16\_\-t data)
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+{\bf gyro\_\-fsm\_\-state} {\bf gyro\_\-state}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Code for accessing the Gyroscopes. 
+
+
+
+\begin{Code}\begin{verbatim} #include <gyro_spi.h> 
+\end{verbatim}\end{Code}
+
+
+
+These are the functions for initializing and using the SPI- Interface. Please be aware, that the Code currently is optimized for use with the Gyroscopes. One will need to modify it for reusing with other purpose.
+
+\begin{Desc}
+\item[Note:]Based on Atmel Datasheet for Atmega128, Nov. 2006 \end{Desc}
+\begin{Desc}
+\item[Author:]Rainer Ostendorf \end{Desc}
+
+
+\subsection{Define Documentation}
+\index{ro_spi@{ro\_\-spi}!ACC_HB@{ACC\_\-HB}}
+\index{ACC_HB@{ACC\_\-HB}!ro_spi@{ro\_\-spi}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define ACC\_\-HB~0x83}\label{group__ro__spi_g28fde31f8a9dafcccf610c96caeccdf5}
+
+
+high-byte of \char`\"{}read acceleration\char`\"{} control word for ADIS16100 
+
+Definition at line 88 of file gyro\_\-spi.h.
+
+Referenced by SIGNAL().\index{ro_spi@{ro\_\-spi}!ACC_LB@{ACC\_\-LB}}
+\index{ACC_LB@{ACC\_\-LB}!ro_spi@{ro\_\-spi}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define ACC\_\-LB~0x00}\label{group__ro__spi_gb89f1a4d552ccdd144354452b34f0897}
+
+
+low-byte of \char`\"{}read acceleration\char`\"{} control word for ADIS16100 -$>$ 2's complement 
+
+Definition at line 90 of file gyro\_\-spi.h.
+
+Referenced by SIGNAL().\index{ro_spi@{ro\_\-spi}!CS_GYRO1@{CS\_\-GYRO1}}
+\index{CS_GYRO1@{CS\_\-GYRO1}!ro_spi@{ro\_\-spi}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define CS\_\-GYRO1~0}\label{group__ro__spi_ge9c334b89c28b7c73b19a1f57f67e801}
+
+
+chipselect for gyro1 
+
+Definition at line 82 of file gyro\_\-spi.h.\index{ro_spi@{ro\_\-spi}!CS_GYRO2@{CS\_\-GYRO2}}
+\index{CS_GYRO2@{CS\_\-GYRO2}!ro_spi@{ro\_\-spi}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define CS\_\-GYRO2~2}\label{group__ro__spi_g978f20355e200c3fedebfc6cb0535bbd}
+
+
+chipselect for gyro2 
+
+Definition at line 84 of file gyro\_\-spi.h.
+
+Referenced by SIGNAL().\index{ro_spi@{ro\_\-spi}!TEMP_HB@{TEMP\_\-HB}}
+\index{TEMP_HB@{TEMP\_\-HB}!ro_spi@{ro\_\-spi}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define TEMP\_\-HB~0x87}\label{group__ro__spi_g2155b4e3dd30cb96d7c222d615f4f59d}
+
+
+high-byte of \char`\"{}read tempereature\char`\"{} control word for ADIS16100 
+
+Definition at line 93 of file gyro\_\-spi.h.
+
+Referenced by SIGNAL().\index{ro_spi@{ro\_\-spi}!TEMP_LB@{TEMP\_\-LB}}
+\index{TEMP_LB@{TEMP\_\-LB}!ro_spi@{ro\_\-spi}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define TEMP\_\-LB~0x00}\label{group__ro__spi_g66d7c5f2e300719c9944c97ee6127184}
+
+
+low-byte of \char`\"{}read tempereature\char`\"{} control word for ADIS16100 
+
+Definition at line 95 of file gyro\_\-spi.h.
+
+Referenced by SIGNAL().
+
+\subsection{Typedef Documentation}
+\index{ro_spi@{ro\_\-spi}!gyro_fsm_state@{gyro\_\-fsm\_\-state}}
+\index{gyro_fsm_state@{gyro\_\-fsm\_\-state}!ro_spi@{ro\_\-spi}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf gyro\_\-fsm\_\-state\_\-enum}  {\bf gyro\_\-fsm\_\-state}}\label{group__ro__spi_gf39dfe96bed1eb685c907e39f5eb98a7}
+
+
+state definition for the finite state maschine running inside the SPI-ISR 
+
+\subsection{Enumeration Type Documentation}
+\index{ro_spi@{ro\_\-spi}!gyro_fsm_state_enum@{gyro\_\-fsm\_\-state\_\-enum}}
+\index{gyro_fsm_state_enum@{gyro\_\-fsm\_\-state\_\-enum}!ro_spi@{ro\_\-spi}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf gyro\_\-fsm\_\-state\_\-enum}}\label{group__ro__spi_g5a3108ec978dba9260f83fcb22b9869d}
+
+
+state definition for the finite state maschine running inside the SPI-ISR \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{first_run@{first\_\-run}!ro_spi@{ro\_\-spi}}\index{ro_spi@{ro\_\-spi}!first_run@{first\_\-run}}\item[{\em 
+first\_\-run\label{group__ro__spi_gg5a3108ec978dba9260f83fcb22b9869daa7048a2453728fa3d27bbffe627e2c9}
+}]first run of the ISR, not initialized \index{g1_hacc@{g1\_\-hacc}!ro_spi@{ro\_\-spi}}\index{ro_spi@{ro\_\-spi}!g1_hacc@{g1\_\-hacc}}\item[{\em 
+g1\_\-hacc\label{group__ro__spi_gg5a3108ec978dba9260f83fcb22b9869db5aa52663e58641a93d1ccc2ab439bae}
+}]high-byte of \char`\"{}read-acceleration\char`\"{} word was send to gyro 1 \index{g1_lacc@{g1\_\-lacc}!ro_spi@{ro\_\-spi}}\index{ro_spi@{ro\_\-spi}!g1_lacc@{g1\_\-lacc}}\item[{\em 
+g1\_\-lacc\label{group__ro__spi_gg5a3108ec978dba9260f83fcb22b9869d02fb9bcf6fa7553d51a9d384547dd223}
+}]low-byte of \char`\"{}read-acceleration\char`\"{} word was send to gyro 1 \index{g2_hacc@{g2\_\-hacc}!ro_spi@{ro\_\-spi}}\index{ro_spi@{ro\_\-spi}!g2_hacc@{g2\_\-hacc}}\item[{\em 
+g2\_\-hacc\label{group__ro__spi_gg5a3108ec978dba9260f83fcb22b9869deae54b4c6a1a6f6ce88a4260ccf6a863}
+}]high-byte of \char`\"{}read-acceleration\char`\"{} word was send to gyro 2 \index{g2_lacc@{g2\_\-lacc}!ro_spi@{ro\_\-spi}}\index{ro_spi@{ro\_\-spi}!g2_lacc@{g2\_\-lacc}}\item[{\em 
+g2\_\-lacc\label{group__ro__spi_gg5a3108ec978dba9260f83fcb22b9869d068ed2d591f7973cc4b068fbef1197a5}
+}]low-byte of \char`\"{}read-acceleration\char`\"{} word was send to gyro1 \index{g1_htmp@{g1\_\-htmp}!ro_spi@{ro\_\-spi}}\index{ro_spi@{ro\_\-spi}!g1_htmp@{g1\_\-htmp}}\item[{\em 
+g1\_\-htmp\label{group__ro__spi_gg5a3108ec978dba9260f83fcb22b9869d7b62ff87e6785a84e859a7b2fc8a9281}
+}]high-byte of \char`\"{}read-temperature\char`\"{} word was send to gyro1 \index{g1_ltmp@{g1\_\-ltmp}!ro_spi@{ro\_\-spi}}\index{ro_spi@{ro\_\-spi}!g1_ltmp@{g1\_\-ltmp}}\item[{\em 
+g1\_\-ltmp\label{group__ro__spi_gg5a3108ec978dba9260f83fcb22b9869d1f0d734de79b016af02ed02dee9977e1}
+}]low-byte of \char`\"{}read-temperature\char`\"{} word was send to gyro1 \index{g2_htmp@{g2\_\-htmp}!ro_spi@{ro\_\-spi}}\index{ro_spi@{ro\_\-spi}!g2_htmp@{g2\_\-htmp}}\item[{\em 
+g2\_\-htmp\label{group__ro__spi_gg5a3108ec978dba9260f83fcb22b9869ddbea7d727a42db801d618068634aaa80}
+}]high-byte of \char`\"{}read-temperature\char`\"{} word was send to gyro2 \index{g2_ltmp@{g2\_\-ltmp}!ro_spi@{ro\_\-spi}}\index{ro_spi@{ro\_\-spi}!g2_ltmp@{g2\_\-ltmp}}\item[{\em 
+g2\_\-ltmp\label{group__ro__spi_gg5a3108ec978dba9260f83fcb22b9869ddaa21ba415939f952c8490b9d73221aa}
+}]high-byte of \char`\"{}read-temperature\char`\"{} word was send to gyro2 \end{description}
+\end{Desc}
+
+
+
+Definition at line 98 of file gyro\_\-spi.h.
+
+\subsection{Function Documentation}
+\index{ro_spi@{ro\_\-spi}!init_spi_gyro@{init\_\-spi\_\-gyro}}
+\index{init_spi_gyro@{init\_\-spi\_\-gyro}!ro_spi@{ro\_\-spi}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void init\_\-spi\_\-gyro (uint8\_\-t {\em interrupt\_\-mode})}\label{group__ro__spi_g67c94e3e04f57f7245efad8100c05e3f}
+
+
+Initialize the onboard SPInterface to match the needs of the AD ADIS16100 Gyroskope. This means setting the clock, setting the ports directions, setting mode etc. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em interrupt\_\-mode}]flag wether to enable the interrupt mode in irq-mode, the ISR takes care of reading the Gyros as fast as possible and fills a global array used as ringbuffer of sample-values. Either the Gyros have to be read manually by calling the spi\_\-write-functions. \end{description}
+\end{Desc}
+
+
+Set the SPI-port-Pin directions: B0 - /SS -$>$ Output, 1 B1 - SCLK -$>$ Output, 1 B2 - MOSI -$>$ Output, 1 B3 - MISO -$>$ Input, 0
+
+Set SPI Control register: 7 - SPIE, Interrup Enable -$>$ 1, enable IRQs 6 - SPE, SPI-Enbale -$>$ 1, enable SPI-System 5 - DORD, Data\-Order -$>$ 0, MSB first (leftshift) 4 - MSTR, Master/Slave -$>$ 1, Master\-Mode 3 - CPOL, Clk\-Polarity -$>$ 0, begin with leading edge rising,trailing edge falling 2 - CPHA, Clk\-Phase -$>$ 1, sample on leading edge (0-1), setup on trailing(1-0) 1,0 SPR1,0, Clock\-Rate, 1,1 - for 125 k\-Hz CLK with SPI2x not set
+
+Set SPI Status Register: 0, SPI2X -$>$ 1,clk-doubling for 0.25 Mhz
+
+Set the selftest-signals to be outputs
+
+deactive self-tests 
+
+Definition at line 183 of file gyro\_\-spi.c.\index{ro_spi@{ro\_\-spi}!spi_cs@{spi\_\-cs}}
+\index{spi_cs@{spi\_\-cs}!ro_spi@{ro\_\-spi}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void spi\_\-cs (uint8\_\-t {\em chip})}\label{group__ro__spi_gf89275f6d086acbd0a0fdfbf4d0cbc8e}
+
+
+choose a chip by setting the CS1 and CS2 signal towards the GAL according \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em chip}]Nr of the /CS-Signal to choose (0-3) \end{description}
+\end{Desc}
+
+
+Definition at line 239 of file gyro\_\-spi.c.
+
+Referenced by read\_\-from\_\-ram(), read\_\-from\_\-spi(), write\_\-to\_\-ram(), and write\_\-to\_\-spi().\index{ro_spi@{ro\_\-spi}!spi_write_16@{spi\_\-write\_\-16}}
+\index{spi_write_16@{spi\_\-write\_\-16}!ro_spi@{ro\_\-spi}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t spi\_\-write\_\-16 (uint16\_\-t {\em data})}\label{group__ro__spi_gf202c7a0b210c4af9ffeaf4de3abbff0}
+
+
+Tranfer 2 Bytes given in data via the SPI, return the 2 Bytes sampled during transfer. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em data}]16bit word that is transferred \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]data sampled during transfer \end{Desc}
+
+
+Definition at line 298 of file gyro\_\-spi.c.\index{ro_spi@{ro\_\-spi}!spi_write_16_nocs@{spi\_\-write\_\-16\_\-nocs}}
+\index{spi_write_16_nocs@{spi\_\-write\_\-16\_\-nocs}!ro_spi@{ro\_\-spi}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t spi\_\-write\_\-16\_\-nocs (uint16\_\-t {\em data})}\label{group__ro__spi_g3d9ca457fe2d0967e9754da3aea2e548}
+
+
+
+
+Definition at line 329 of file gyro\_\-spi.c.
+
+Referenced by read\_\-from\_\-ram(), read\_\-from\_\-spi(), write\_\-to\_\-ram(), and write\_\-to\_\-spi().\index{ro_spi@{ro\_\-spi}!spi_write_8@{spi\_\-write\_\-8}}
+\index{spi_write_8@{spi\_\-write\_\-8}!ro_spi@{ro\_\-spi}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t spi\_\-write\_\-8 (uint8\_\-t {\em data})}\label{group__ro__spi_g710be1737d6c2637145427d3e776edfd}
+
+
+Transfer 1 Byte given in data via the SPI return the 1 Byte sampled during transfer. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em data}]8bit word that is transferred \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]data sampled during transfer \end{Desc}
+
+
+Definition at line 252 of file gyro\_\-spi.c.\index{ro_spi@{ro\_\-spi}!spi_write_8_nocs@{spi\_\-write\_\-8\_\-nocs}}
+\index{spi_write_8_nocs@{spi\_\-write\_\-8\_\-nocs}!ro_spi@{ro\_\-spi}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t spi\_\-write\_\-8\_\-nocs (uint8\_\-t {\em data})}\label{group__ro__spi_g749901211df982eb115539d254801df9}
+
+
+
+
+Definition at line 277 of file gyro\_\-spi.c.
+
+Referenced by read\_\-from\_\-ram(), read\_\-from\_\-spi(), write\_\-to\_\-ram(), and write\_\-to\_\-spi().
+
+\subsection{Variable Documentation}
+\index{ro_spi@{ro\_\-spi}!gyro_state@{gyro\_\-state}}
+\index{gyro_state@{gyro\_\-state}!ro_spi@{ro\_\-spi}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf gyro\_\-fsm\_\-state} {\bf gyro\_\-state}}\label{group__ro__spi_g7487340e71945cd71a75d6fbd8d7fd18}
+
+
+the state variable for the ISRs finite state maschine 
+
+Definition at line 120 of file gyro\_\-spi.h.
+
+Referenced by SIGNAL().

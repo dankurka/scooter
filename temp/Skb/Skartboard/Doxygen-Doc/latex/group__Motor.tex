@@ -1,0 +1,70 @@
+\section{PWM}
+\label{group__Motor}\index{PWM@{PWM}}
+Routines for controlling PWM-Signals towards the Motors.  
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void {\bf init\_\-motor\_\-pwm} (void)
+\item 
+void {\bf set\_\-motor\_\-pwm\_\-freq} (int hz)
+\item 
+void {\bf set\_\-motor1} (int percent)
+\item 
+void {\bf set\_\-motor2} (int percent)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Routines for controlling PWM-Signals towards the Motors. 
+
+
+
+\begin{Code}\begin{verbatim} #include <motor_pwm.h> 
+\end{verbatim}\end{Code}
+
+
+
+This Routines are for setting the PWMs base frequency and for scaling the modulated duty cycle.
+
+\begin{Desc}
+\item[Note:]Based on Atmel Datasheet for Atmega128, Nov. 2006 \end{Desc}
+\begin{Desc}
+\item[Author:]Rainer Ostendorf \end{Desc}
+
+
+\subsection{Function Documentation}
+\index{Motor@{Motor}!init_motor_pwm@{init\_\-motor\_\-pwm}}
+\index{init_motor_pwm@{init\_\-motor\_\-pwm}!Motor@{Motor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void init\_\-motor\_\-pwm (void)}\label{group__Motor_g37644f1449a77dae22f6b6eefaae6899}
+
+
+Initialize the PWM-Signal generation for the both motors \index{Motor@{Motor}!set_motor1@{set\_\-motor1}}
+\index{set_motor1@{set\_\-motor1}!Motor@{Motor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void set\_\-motor1 (int {\em percent})}\label{group__Motor_g15152cbf837dcaebad4d2bae37fafe96}
+
+
+Set the duty-cycle of motor 1 \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em percent}]Percentage of duty (high) level during clock cycle \end{description}
+\end{Desc}
+\index{Motor@{Motor}!set_motor2@{set\_\-motor2}}
+\index{set_motor2@{set\_\-motor2}!Motor@{Motor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void set\_\-motor2 (int {\em percent})}\label{group__Motor_gd886695fc46c779fc3331e68715f9346}
+
+
+Set the duty-cycle of motor 2 \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em percent}]Percentage of duty (high) level during clock cycle \end{description}
+\end{Desc}
+\index{Motor@{Motor}!set_motor_pwm_freq@{set\_\-motor\_\-pwm\_\-freq}}
+\index{set_motor_pwm_freq@{set\_\-motor\_\-pwm\_\-freq}!Motor@{Motor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void set\_\-motor\_\-pwm\_\-freq (int {\em hz})}\label{group__Motor_ge7557fa03c837f612c0acb62a24c1474}
+
+
+Set the base frequency for the PWM signal \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em hz}]frequency in Hertz \end{description}
+\end{Desc}

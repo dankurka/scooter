@@ -1,0 +1,186 @@
+\section{Global variables}
+\label{group__ro__globals}\index{Global variables@{Global variables}}
+global Variables for passing information between ISR and normal Code  
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf GYRO1\_\-SAMPLES\_\-BUFSIZE}~8
+\item 
+\#define {\bf GYRO2\_\-SAMPLES\_\-BUFSIZE}~8
+\item 
+\#define {\bf ACCL\_\-SAMPLES\_\-BUFSIZE}~8
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+uint8\_\-t {\bf gyro1\_\-idx}
+\item 
+uint8\_\-t {\bf gyro2\_\-idx}
+\item 
+uint16\_\-t {\bf gyro1\_\-samples} [GYRO1\_\-SAMPLES\_\-BUFSIZE]
+\item 
+uint16\_\-t {\bf gyro2\_\-samples} [GYRO1\_\-SAMPLES\_\-BUFSIZE]
+\item 
+uint16\_\-t {\bf gyro1\_\-temp}
+\item 
+uint16\_\-t {\bf gyro2\_\-temp}
+\item 
+uint8\_\-t {\bf read\_\-gyro\_\-temp}
+\item 
+uint8\_\-t {\bf accl\_\-high\_\-idx}
+\item 
+uint8\_\-t {\bf accl\_\-low\_\-idx}
+\item 
+uint16\_\-t {\bf accl\_\-high\_\-samples} [ACCL\_\-SAMPLES\_\-BUFSIZE]
+\item 
+uint16\_\-t {\bf accl\_\-low\_\-samples} [ACCL\_\-SAMPLES\_\-BUFSIZE]
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+global Variables for passing information between ISR and normal Code 
+
+
+
+\begin{Code}\begin{verbatim} #include <leds.h> 
+\end{verbatim}\end{Code}
+
+
+
+This file contains variables for intercommunication of sofware-modules especially between Interrupt-Service-Routines that read the external sensors and the control alorithms.
+
+\begin{Desc}
+\item[Author:]Rainer Ostendorf \end{Desc}
+
+
+\subsection{Define Documentation}
+\index{ro_globals@{ro\_\-globals}!ACCL_SAMPLES_BUFSIZE@{ACCL\_\-SAMPLES\_\-BUFSIZE}}
+\index{ACCL_SAMPLES_BUFSIZE@{ACCL\_\-SAMPLES\_\-BUFSIZE}!ro_globals@{ro\_\-globals}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define ACCL\_\-SAMPLES\_\-BUFSIZE~8}\label{group__ro__globals_g65722f3de281151a8ad20ab42556f894}
+
+
+Size of the samples ringbuffer for accelerometer. Same restrictions as for Gyro1\_\-Bufsize -$>$ el. of n = 2$^\wedge$x ! 
+
+Definition at line 85 of file globals.h.
+
+Referenced by SIGNAL(), and stabilizer\_\-loop().\index{ro_globals@{ro\_\-globals}!GYRO1_SAMPLES_BUFSIZE@{GYRO1\_\-SAMPLES\_\-BUFSIZE}}
+\index{GYRO1_SAMPLES_BUFSIZE@{GYRO1\_\-SAMPLES\_\-BUFSIZE}!ro_globals@{ro\_\-globals}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define GYRO1\_\-SAMPLES\_\-BUFSIZE~8}\label{group__ro__globals_g66385c3be72a1a5ffeb3859aa30af060}
+
+
+Size of the samples ringbuffer for Gyro1. The size is binary ANDed with the ringbuffer-index as a real modulo would be much to expensive. So only values the are 2 to the power of n with n = 0, 1, 2, .. are allowed here e.g.: 1,2,4,16,32,64, 128, 255 using other value will lead to unpredictable results, as the index will not increment linear Please be aware that a 8bit variable is used to hold this value, so the maximum size is 255 ! 
+
+Definition at line 77 of file globals.h.
+
+Referenced by monitor(), SIGNAL(), and stabilizer\_\-loop().\index{ro_globals@{ro\_\-globals}!GYRO2_SAMPLES_BUFSIZE@{GYRO2\_\-SAMPLES\_\-BUFSIZE}}
+\index{GYRO2_SAMPLES_BUFSIZE@{GYRO2\_\-SAMPLES\_\-BUFSIZE}!ro_globals@{ro\_\-globals}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define GYRO2\_\-SAMPLES\_\-BUFSIZE~8}\label{group__ro__globals_gf731d86d3d791c39f4de79412c500079}
+
+
+Size of the samples ringbuffer for gyro2 . Same restrictions as for Gyro1\_\-Bufsize -$>$ el. of n = 2$^\wedge$x ! 
+
+Definition at line 81 of file globals.h.
+
+Referenced by SIGNAL().
+
+\subsection{Variable Documentation}
+\index{ro_globals@{ro\_\-globals}!accl_high_idx@{accl\_\-high\_\-idx}}
+\index{accl_high_idx@{accl\_\-high\_\-idx}!ro_globals@{ro\_\-globals}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t {\bf accl\_\-high\_\-idx}}\label{group__ro__globals_g59caa8f8fab6ab60d64f16a87a7b0f43}
+
+
+Index to accelerometer-samples ringbuffer 
+
+Definition at line 111 of file globals.h.
+
+Referenced by init\_\-accel\_\-capture(), and SIGNAL().\index{ro_globals@{ro\_\-globals}!accl_high_samples@{accl\_\-high\_\-samples}}
+\index{accl_high_samples@{accl\_\-high\_\-samples}!ro_globals@{ro\_\-globals}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t {\bf accl\_\-high\_\-samples}[ACCL\_\-SAMPLES\_\-BUFSIZE]}\label{group__ro__globals_gb3a23c6a3619f9f782ad505bd5700bc2}
+
+
+Ringbuffer holding last value of accelerometer 
+
+Definition at line 114 of file globals.h.
+
+Referenced by monitor(), SIGNAL(), and stabilizer\_\-loop().\index{ro_globals@{ro\_\-globals}!accl_low_idx@{accl\_\-low\_\-idx}}
+\index{accl_low_idx@{accl\_\-low\_\-idx}!ro_globals@{ro\_\-globals}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t {\bf accl\_\-low\_\-idx}}\label{group__ro__globals_gc68711930c7bd1daaeec498ba9bb3ca7}
+
+
+
+
+Definition at line 112 of file globals.h.
+
+Referenced by init\_\-accel\_\-capture(), and SIGNAL().\index{ro_globals@{ro\_\-globals}!accl_low_samples@{accl\_\-low\_\-samples}}
+\index{accl_low_samples@{accl\_\-low\_\-samples}!ro_globals@{ro\_\-globals}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t {\bf accl\_\-low\_\-samples}[ACCL\_\-SAMPLES\_\-BUFSIZE]}\label{group__ro__globals_g82b3b9358d663fddd337464079cb201c}
+
+
+
+
+Definition at line 115 of file globals.h.
+
+Referenced by monitor(), SIGNAL(), and stabilizer\_\-loop().\index{ro_globals@{ro\_\-globals}!gyro1_idx@{gyro1\_\-idx}}
+\index{gyro1_idx@{gyro1\_\-idx}!ro_globals@{ro\_\-globals}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t {\bf gyro1\_\-idx}}\label{group__ro__globals_gfab9254be95380573eb12316b366027b}
+
+
+Index variables, holding the latest write positions of the ISR. 
+
+Definition at line 92 of file globals.h.
+
+Referenced by SIGNAL().\index{ro_globals@{ro\_\-globals}!gyro1_samples@{gyro1\_\-samples}}
+\index{gyro1_samples@{gyro1\_\-samples}!ro_globals@{ro\_\-globals}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t {\bf gyro1\_\-samples}[GYRO1\_\-SAMPLES\_\-BUFSIZE]}\label{group__ro__globals_gdf431d8f8d0d2f01f1ab06accecf8424}
+
+
+Ringbuffers, the ISR saves the newest samples to 
+
+Definition at line 95 of file globals.h.
+
+Referenced by monitor(), SIGNAL(), and stabilizer\_\-loop().\index{ro_globals@{ro\_\-globals}!gyro1_temp@{gyro1\_\-temp}}
+\index{gyro1_temp@{gyro1\_\-temp}!ro_globals@{ro\_\-globals}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t {\bf gyro1\_\-temp}}\label{group__ro__globals_ge1343751a53f8acfe15529257d40d919}
+
+
+Current temperature value of the Gyros 
+
+Definition at line 98 of file globals.h.
+
+Referenced by monitor(), and SIGNAL().\index{ro_globals@{ro\_\-globals}!gyro2_idx@{gyro2\_\-idx}}
+\index{gyro2_idx@{gyro2\_\-idx}!ro_globals@{ro\_\-globals}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t {\bf gyro2\_\-idx}}\label{group__ro__globals_g4beaab24cfaab8dc83e8381193cd3d29}
+
+
+
+
+Definition at line 93 of file globals.h.
+
+Referenced by SIGNAL().\index{ro_globals@{ro\_\-globals}!gyro2_samples@{gyro2\_\-samples}}
+\index{gyro2_samples@{gyro2\_\-samples}!ro_globals@{ro\_\-globals}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t {\bf gyro2\_\-samples}[GYRO1\_\-SAMPLES\_\-BUFSIZE]}\label{group__ro__globals_g74aec8575654ee30d4368a9b21d7eef3}
+
+
+
+
+Definition at line 96 of file globals.h.
+
+Referenced by monitor(), and SIGNAL().\index{ro_globals@{ro\_\-globals}!gyro2_temp@{gyro2\_\-temp}}
+\index{gyro2_temp@{gyro2\_\-temp}!ro_globals@{ro\_\-globals}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t {\bf gyro2\_\-temp}}\label{group__ro__globals_gfc06975225ead84b5fe6989cd85fef69}
+
+
+
+
+Definition at line 99 of file globals.h.
+
+Referenced by monitor(), and SIGNAL().\index{ro_globals@{ro\_\-globals}!read_gyro_temp@{read\_\-gyro\_\-temp}}
+\index{read_gyro_temp@{read\_\-gyro\_\-temp}!ro_globals@{ro\_\-globals}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t {\bf read\_\-gyro\_\-temp}}\label{group__ro__globals_g8d32c2ec3033cada7fc3073d5d1e18e8}
+
+
+Flag to trigger the finite state maschine within the SPI-ISR to read the temperature of each sensor once when set to 1. After the temp.-values are saved to their global accessible variables, the flag is cleared. 
+
+Definition at line 106 of file globals.h.
+
+Referenced by SIGNAL().

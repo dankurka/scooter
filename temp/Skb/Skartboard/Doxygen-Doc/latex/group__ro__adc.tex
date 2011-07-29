@@ -1,0 +1,167 @@
+\section{ADC Routines}
+\label{group__ro__adc}\index{ADC Routines@{ADC Routines}}
+Routines for controlling the onboard Analog-Digital converter.  
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf ADC\_\-GYRO1}~0
+\item 
+\#define {\bf ADC\_\-GYRO2}~1
+\item 
+\#define {\bf ADC\_\-CH2}~2
+\item 
+\#define {\bf ADC\_\-CH3}~3
+\item 
+\#define {\bf ADC\_\-STEERING\_\-1}~4
+\item 
+\#define {\bf ADC\_\-STEERING\_\-2}~5
+\item 
+\#define {\bf ADC\_\-TACHO\_\-1}~6
+\item 
+\#define {\bf ADC\_\-TACHO\_\-2}~7
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void {\bf init\_\-adc} ()
+\item 
+void {\bf adc\_\-sel\_\-channel} (char channel)
+\item 
+unsigned int {\bf read\_\-adc} ()
+\item 
+void {\bf print\_\-all\_\-adc} (void)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Routines for controlling the onboard Analog-Digital converter. 
+
+
+
+\begin{Code}\begin{verbatim} #include <adc.h> 
+\end{verbatim}\end{Code}
+
+
+
+This Routines are for initializing the ADC and selecting the analog input channel of the multiplexer. After a channel has be activated, a single conversion may be performed by calling \doxyref{read\_\-adc()}{p.}{group__ro__adc_g44aa940d70eb32e3293a0824943927f8}.
+
+\begin{Desc}
+\item[Note:]Based on Atmel Datasheet for Atmega128, Nov. 2006 \end{Desc}
+\begin{Desc}
+\item[Author:]Rainer Ostendorf \end{Desc}
+
+
+\subsection{Define Documentation}
+\index{ro_adc@{ro\_\-adc}!ADC_CH2@{ADC\_\-CH2}}
+\index{ADC_CH2@{ADC\_\-CH2}!ro_adc@{ro\_\-adc}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-CH2~2}\label{group__ro__adc_g2bb0c1b2de3aa355244417d9a42a8966}
+
+
+2: current unused, pin header 
+
+Definition at line 67 of file adc.h.\index{ro_adc@{ro\_\-adc}!ADC_CH3@{ADC\_\-CH3}}
+\index{ADC_CH3@{ADC\_\-CH3}!ro_adc@{ro\_\-adc}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-CH3~3}\label{group__ro__adc_g6ae98bab335f9d073a58d70e7ba4f844}
+
+
+3: current unused, pin header 
+
+Definition at line 69 of file adc.h.\index{ro_adc@{ro\_\-adc}!ADC_GYRO1@{ADC\_\-GYRO1}}
+\index{ADC_GYRO1@{ADC\_\-GYRO1}!ro_adc@{ro\_\-adc}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-GYRO1~0}\label{group__ro__adc_gbd3e18c204872b64e4c6445081bfe97f}
+
+
+the ADC-channels : 0: connected to Vref of Gyro 1 
+
+Definition at line 63 of file adc.h.\index{ro_adc@{ro\_\-adc}!ADC_GYRO2@{ADC\_\-GYRO2}}
+\index{ADC_GYRO2@{ADC\_\-GYRO2}!ro_adc@{ro\_\-adc}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-GYRO2~1}\label{group__ro__adc_ga55476fad1a945840e0fe2788ab21463}
+
+
+1: connected to Vref of Gyro 2 
+
+Definition at line 65 of file adc.h.\index{ro_adc@{ro\_\-adc}!ADC_STEERING_1@{ADC\_\-STEERING\_\-1}}
+\index{ADC_STEERING_1@{ADC\_\-STEERING\_\-1}!ro_adc@{ro\_\-adc}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-STEERING\_\-1~4}\label{group__ro__adc_geb2b66d86543329c18ee38b5d676043f}
+
+
+4: steering potetiometer, X-Axis 
+
+Definition at line 71 of file adc.h.
+
+Referenced by stabilizer\_\-loop().\index{ro_adc@{ro\_\-adc}!ADC_STEERING_2@{ADC\_\-STEERING\_\-2}}
+\index{ADC_STEERING_2@{ADC\_\-STEERING\_\-2}!ro_adc@{ro\_\-adc}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-STEERING\_\-2~5}\label{group__ro__adc_gecb0e23a519f15d7d3754ec4837e498a}
+
+
+5: steering potetiometer, Y-Axis 
+
+Definition at line 73 of file adc.h.\index{ro_adc@{ro\_\-adc}!ADC_TACHO_1@{ADC\_\-TACHO\_\-1}}
+\index{ADC_TACHO_1@{ADC\_\-TACHO\_\-1}!ro_adc@{ro\_\-adc}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-TACHO\_\-1~6}\label{group__ro__adc_g7761ed322f500a2597884f6224e73db1}
+
+
+6: Tacho 1, (to be defined) 
+
+Definition at line 75 of file adc.h.\index{ro_adc@{ro\_\-adc}!ADC_TACHO_2@{ADC\_\-TACHO\_\-2}}
+\index{ADC_TACHO_2@{ADC\_\-TACHO\_\-2}!ro_adc@{ro\_\-adc}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-TACHO\_\-2~7}\label{group__ro__adc_gae7410f222ed31e88fcc0763f09e971a}
+
+
+7: Tacho 2 (to be defined) 
+
+Definition at line 77 of file adc.h.
+
+\subsection{Function Documentation}
+\index{ro_adc@{ro\_\-adc}!adc_sel_channel@{adc\_\-sel\_\-channel}}
+\index{adc_sel_channel@{adc\_\-sel\_\-channel}!ro_adc@{ro\_\-adc}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void adc\_\-sel\_\-channel (char {\em channel})}\label{group__ro__adc_g2c7a22b5e74fbc930e5e4c6a0633b3f3}
+
+
+select the active ADC-Channel from input multiplexer \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em channel}]ADC-Channel to read, 0-7 \end{description}
+\end{Desc}
+
+
+Definition at line 71 of file adc.c.
+
+Referenced by monitor(), print\_\-all\_\-adc(), and stabilizer\_\-loop().\index{ro_adc@{ro\_\-adc}!init_adc@{init\_\-adc}}
+\index{init_adc@{init\_\-adc}!ro_adc@{ro\_\-adc}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void init\_\-adc ()}\label{group__ro__adc_g2d55adaff96e84bf99460f7c9d24f7a4}
+
+
+
+
+Definition at line 46 of file adc.c.
+
+Referenced by main().\index{ro_adc@{ro\_\-adc}!print_all_adc@{print\_\-all\_\-adc}}
+\index{print_all_adc@{print\_\-all\_\-adc}!ro_adc@{ro\_\-adc}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void print\_\-all\_\-adc (void)}\label{group__ro__adc_gea86284e6439146ebde0940ce5261148}
+
+
+demo-code: read in all ADC channels and print their result to the first uart. 
+
+Definition at line 94 of file adc.c.
+
+References adc\_\-sel\_\-channel(), read\_\-adc(), and uart\_\-puts().
+
+Here is the call graph for this function:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=131pt]{group__ro__adc_gea86284e6439146ebde0940ce5261148_cgraph}
+\end{center}
+\end{figure}
+\index{ro_adc@{ro\_\-adc}!read_adc@{read\_\-adc}}
+\index{read_adc@{read\_\-adc}!ro_adc@{ro\_\-adc}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}unsigned int read\_\-adc ()}\label{group__ro__adc_g44aa940d70eb32e3293a0824943927f8}
+
+
+start an ADConversion, busy-wait for the result and return it a conversion will last approx. 12us (calculated, not measured, TODO) \begin{Desc}
+\item[Returns:]the conversion result \end{Desc}
+
+
+Definition at line 81 of file adc.c.
+
+Referenced by monitor(), print\_\-all\_\-adc(), and stabilizer\_\-loop().

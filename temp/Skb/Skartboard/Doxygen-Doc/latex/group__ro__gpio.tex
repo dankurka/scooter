@@ -1,0 +1,74 @@
+\section{GPIO/Port Routines}
+\label{group__ro__gpio}\index{GPIO/Port Routines@{GPIO/Port Routines}}
+Routines for controlling the general purpose IO-ports and signals.  
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf BUT1}~(!( PINA \& (1$<$$<$PA0) ))
+\item 
+\#define {\bf BUT2}~(!( PINA \& (1$<$$<$PA1)))
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void {\bf init\_\-port\_\-directions} (void)
+\item 
+void {\bf init\_\-port\_\-values} (void)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Routines for controlling the general purpose IO-ports and signals. 
+
+
+
+\begin{Code}\begin{verbatim} #include <gpio.h> 
+\end{verbatim}\end{Code}
+
+
+
+This Routines are for initializing and using the general purpose I/O-Signals.
+
+\begin{Desc}
+\item[Note:]Based on Atmel Datasheet for Atmega128, Nov. 2006 \end{Desc}
+\begin{Desc}
+\item[Author:]Rainer Ostendorf \end{Desc}
+
+
+\subsection{Define Documentation}
+\index{ro_gpio@{ro\_\-gpio}!BUT1@{BUT1}}
+\index{BUT1@{BUT1}!ro_gpio@{ro\_\-gpio}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define BUT1~(!( PINA \& (1$<$$<$PA0) ))}\label{group__ro__gpio_g962ad4f9fe408bb50f47353836a09576}
+
+
+Define for reading the Button. Value is true if Button 1 is pressed 
+
+Definition at line 49 of file gpio.h.\index{ro_gpio@{ro\_\-gpio}!BUT2@{BUT2}}
+\index{BUT2@{BUT2}!ro_gpio@{ro\_\-gpio}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define BUT2~(!( PINA \& (1$<$$<$PA1)))}\label{group__ro__gpio_g2032b80cf754092d50b7b8257ed9a458}
+
+
+Define for reading the Button. Value is true if Button 2 is pressed 
+
+Definition at line 51 of file gpio.h.
+
+\subsection{Function Documentation}
+\index{ro_gpio@{ro\_\-gpio}!init_port_directions@{init\_\-port\_\-directions}}
+\index{init_port_directions@{init\_\-port\_\-directions}!ro_gpio@{ro\_\-gpio}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void init\_\-port\_\-directions (void)}\label{group__ro__gpio_g6b2bee68f56638bdfcd94255e32cd367}
+
+
+Initialize the IO-Ports Direction registers (input, output) 
+
+Definition at line 32 of file gpio.c.
+
+Referenced by main().\index{ro_gpio@{ro\_\-gpio}!init_port_values@{init\_\-port\_\-values}}
+\index{init_port_values@{init\_\-port\_\-values}!ro_gpio@{ro\_\-gpio}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void init\_\-port\_\-values (void)}\label{group__ro__gpio_ge9416d54a5ef2cd02370c4bcc8635327}
+
+
+Initialize the IO-Ports Value registers 
+
+Definition at line 51 of file gpio.c.
+
+Referenced by main().
