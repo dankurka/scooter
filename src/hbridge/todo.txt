@@ -1,0 +1,17 @@
+//- Dioden sind verpolt im bestückungsplan, Diodentypen bei Supressor
+
+//- gate dioden in schottky umbenennen
+
+//- gate widerstände alle werte setzen
+
+- stromregelung anpassen und disable kondensator dann ausfüllen.
+
+//- drossel beschriften
+
+//-texte an anschlusklemmen
+
+//- bohrlöcher für die uf sind zu klein auf min. 1mms
+
+//-ref: LT1004 CZ 2,5V
+
+//- alterntativ bestückung für temperaturabschaltung (widerstand ist die durchkonkatierung eine extra setzen)
