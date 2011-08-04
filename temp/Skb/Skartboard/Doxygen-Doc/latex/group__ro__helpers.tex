@@ -1,0 +1,46 @@
+\section{Auxiliary functions}
+\label{group__ro__helpers}\index{Auxiliary functions@{Auxiliary functions}}
+Small helper utils.  
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void {\bf delay\_\-ms} (unsigned int ms)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Small helper utils. 
+
+
+
+\begin{Code}\begin{verbatim} #include <helpers.h> 
+\end{verbatim}\end{Code}
+
+
+
+This is the place for some small helpers, eg. for delays or data-conversion. Do not put extensive code in here.
+
+\begin{Desc}
+\item[Author:]Rainer Ostendorf \end{Desc}
+
+
+\subsection{Function Documentation}
+\index{ro_helpers@{ro\_\-helpers}!delay_ms@{delay\_\-ms}}
+\index{delay_ms@{delay\_\-ms}!ro_helpers@{ro\_\-helpers}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void delay\_\-ms (unsigned int {\em ms})}\label{group__ro__helpers_gf29c4657f62375d42c6ee104b6bf4491}
+
+
+delay program executing for ms milliseconds by doing busy waiting
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ms}]delay in ms \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 40 of file helpers.c.
+
+Referenced by led\_\-pwm\_\-fade().

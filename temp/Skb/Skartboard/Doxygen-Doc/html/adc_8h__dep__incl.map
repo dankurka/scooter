@@ -1,0 +1,5 @@
+base referer
+rect $adc_8c.html 130,6 188,30
+rect $main_8c.html 126,54 192,78
+rect $monitor_8c.html 116,102 202,126
+rect $stabilizer_8c.html 112,150 206,174

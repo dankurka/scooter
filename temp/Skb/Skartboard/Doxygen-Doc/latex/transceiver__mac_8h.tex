@@ -1,0 +1,59 @@
+\section{transceiver\_\-mac.h File Reference}
+\label{transceiver__mac_8h}\index{transceiver_mac.h@{transceiver\_\-mac.h}}
+{\tt \#include $<$inttypes.h$>$}\par
+{\tt \#include \char`\"{}transceiver\_\-spi.h\char`\"{}}\par
+
+
+Include dependency graph for transceiver\_\-mac.h:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{transceiver__mac_8h__incl}
+\end{center}
+\end{figure}
+
+
+This graph shows which files directly or indirectly include this file:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=150pt]{transceiver__mac_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf MC13192\_\-IDLE}~0
+\item 
+\#define {\bf MC13192\_\-RX}~1
+\item 
+\#define {\bf MC13192\_\-TX}~2
+\item 
+\#define {\bf NO\_\-PACKET}~0
+\item 
+\#define {\bf RX\_\-PACKET}~1
+\item 
+\#define {\bf TX\_\-PACKET}~2
+\item 
+\#define {\bf DROP\_\-PACKET}~3
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void {\bf MC13192\_\-init} ()
+\begin{CompactList}\small\item\em Initialize the MC13192 TODO: write detailed code description! \item\end{CompactList}\item 
+void {\bf init\_\-rx\_\-pkt\_\-mode} (void)
+\begin{CompactList}\small\item\em switch MC13192 to receive mode TODO: write detailed code description! \item\end{CompactList}\item 
+int {\bf get\_\-rx\_\-pkt} ({\bf rx\_\-packet\_\-t} $\ast$rx\_\-packet)
+\begin{CompactList}\small\item\em read a data paket from MC13192 \item\end{CompactList}\item 
+void {\bf MC13192\_\-update\_\-state} (void)
+\begin{CompactList}\small\item\em Update the state variable to reflect the state of MC13192. \item\end{CompactList}\item 
+int {\bf tx\_\-pkt\_\-mode} ({\bf tx\_\-packet\_\-t} $\ast$tx\_\-packet)
+\begin{CompactList}\small\item\em send a data packet TODO: write detailed code description! \item\end{CompactList}\item 
+void {\bf cca\_\-modus} (void)
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+uint8\_\-t {\bf mc13192\_\-mode}
+\item 
+uint8\_\-t {\bf mc13192\_\-state}
+\end{CompactItemize}

@@ -1,0 +1,200 @@
+\section{Motor PWM}
+\label{group__ro__motor__pwm}\index{Motor PWM@{Motor PWM}}
+Routines for controlling PWM-Signals towards the Motors.  
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf PWM\_\-RESOLUTION}~255
+\item 
+\#define {\bf PWM\_\-SECURITY\_\-MAX\_\-FREQ}~10000
+\item 
+\#define {\bf PWM\_\-SECURITY\_\-MIN\_\-DUTY}~(PWM\_\-RESOLUTION / 200)
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void {\bf init\_\-motor\_\-pwm} (void)
+\item 
+void {\bf set\_\-motor\_\-pwm\_\-freq} (uint16\_\-t hz)
+\item 
+void {\bf enable\_\-motor1} (void)
+\item 
+void {\bf enable\_\-motor2} (void)
+\item 
+void {\bf disable\_\-motor1} (void)
+\item 
+void {\bf disable\_\-motor2} (void)
+\item 
+void {\bf set\_\-motor1} (uint8\_\-t speed, uint8\_\-t dir)
+\item 
+void {\bf set\_\-motor2} (uint8\_\-t speed, uint8\_\-t dir)
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+uint8\_\-t {\bf \_\-\_\-motor1\_\-duty}
+\item 
+uint8\_\-t {\bf \_\-\_\-motor2\_\-duty}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Routines for controlling PWM-Signals towards the Motors. 
+
+
+
+\begin{Code}\begin{verbatim} #include <motor_pwm.h> 
+\end{verbatim}\end{Code}
+
+
+
+This Routines are for setting the PWMs base frequency and for scaling the modulated duty cycle.
+
+\begin{Desc}
+\item[Note:]Based on Atmel Datasheet for Atmega128, Nov. 2006 \end{Desc}
+\begin{Desc}
+\item[Author:]Rainer Ostendorf \end{Desc}
+
+
+\subsection{Define Documentation}
+\index{ro_motor_pwm@{ro\_\-motor\_\-pwm}!PWM_RESOLUTION@{PWM\_\-RESOLUTION}}
+\index{PWM_RESOLUTION@{PWM\_\-RESOLUTION}!ro_motor_pwm@{ro\_\-motor\_\-pwm}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define PWM\_\-RESOLUTION~255}\label{group__ro__motor__pwm_gd53655e6cac4dfd2c67ecda5eea77a4e}
+
+
+
+
+Definition at line 68 of file motor\_\-pwm.h.
+
+Referenced by monitor(), set\_\-motor1(), set\_\-motor2(), set\_\-motor\_\-pwm\_\-freq(), and stabilizer\_\-loop().\index{ro_motor_pwm@{ro\_\-motor\_\-pwm}!PWM_SECURITY_MAX_FREQ@{PWM\_\-SECURITY\_\-MAX\_\-FREQ}}
+\index{PWM_SECURITY_MAX_FREQ@{PWM\_\-SECURITY\_\-MAX\_\-FREQ}!ro_motor_pwm@{ro\_\-motor\_\-pwm}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define PWM\_\-SECURITY\_\-MAX\_\-FREQ~10000}\label{group__ro__motor__pwm_g5cdf3a3df2eac2fbed2c0541b6f01b17}
+
+
+
+
+Definition at line 76 of file motor\_\-pwm.h.
+
+Referenced by set\_\-motor\_\-pwm\_\-freq().\index{ro_motor_pwm@{ro\_\-motor\_\-pwm}!PWM_SECURITY_MIN_DUTY@{PWM\_\-SECURITY\_\-MIN\_\-DUTY}}
+\index{PWM_SECURITY_MIN_DUTY@{PWM\_\-SECURITY\_\-MIN\_\-DUTY}!ro_motor_pwm@{ro\_\-motor\_\-pwm}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define PWM\_\-SECURITY\_\-MIN\_\-DUTY~(PWM\_\-RESOLUTION / 200)}\label{group__ro__motor__pwm_ge8ab18fa7dc74ecfc6f06887f3d8ae20}
+
+
+
+
+Definition at line 83 of file motor\_\-pwm.h.
+
+Referenced by set\_\-motor1(), and set\_\-motor2().
+
+\subsection{Function Documentation}
+\index{ro_motor_pwm@{ro\_\-motor\_\-pwm}!disable_motor1@{disable\_\-motor1}}
+\index{disable_motor1@{disable\_\-motor1}!ro_motor_pwm@{ro\_\-motor\_\-pwm}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void disable\_\-motor1 (void)\hspace{0.3cm}{\tt  [inline]}}\label{group__ro__motor__pwm_gb19a14ee7f5870471591172ab341e5b8}
+
+
+set enable-signal of motor 1 to low 
+
+Definition at line 110 of file motor\_\-pwm.c.
+
+Referenced by main().\index{ro_motor_pwm@{ro\_\-motor\_\-pwm}!disable_motor2@{disable\_\-motor2}}
+\index{disable_motor2@{disable\_\-motor2}!ro_motor_pwm@{ro\_\-motor\_\-pwm}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void disable\_\-motor2 (void)\hspace{0.3cm}{\tt  [inline]}}\label{group__ro__motor__pwm_gd10579e788ea58460992ffafe3227c02}
+
+
+set enable-signal of motor 2 to low 
+
+Definition at line 120 of file motor\_\-pwm.c.
+
+Referenced by main().\index{ro_motor_pwm@{ro\_\-motor\_\-pwm}!enable_motor1@{enable\_\-motor1}}
+\index{enable_motor1@{enable\_\-motor1}!ro_motor_pwm@{ro\_\-motor\_\-pwm}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void enable\_\-motor1 (void)\hspace{0.3cm}{\tt  [inline]}}\label{group__ro__motor__pwm_gd36c8e4b0f548489729dd29c5dec7133}
+
+
+set enable-signal of motor 1 to high 
+
+Definition at line 115 of file motor\_\-pwm.c.\index{ro_motor_pwm@{ro\_\-motor\_\-pwm}!enable_motor2@{enable\_\-motor2}}
+\index{enable_motor2@{enable\_\-motor2}!ro_motor_pwm@{ro\_\-motor\_\-pwm}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void enable\_\-motor2 (void)\hspace{0.3cm}{\tt  [inline]}}\label{group__ro__motor__pwm_g252b80cfc7999924d68b2dd48c3ec242}
+
+
+set enable-signal of motor 2 to high 
+
+Definition at line 125 of file motor\_\-pwm.c.\index{ro_motor_pwm@{ro\_\-motor\_\-pwm}!init_motor_pwm@{init\_\-motor\_\-pwm}}
+\index{init_motor_pwm@{init\_\-motor\_\-pwm}!ro_motor_pwm@{ro\_\-motor\_\-pwm}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void init\_\-motor\_\-pwm (void)}\label{group__ro__motor__pwm_g37644f1449a77dae22f6b6eefaae6899}
+
+
+Initialize the PWM-Signal generation for the both motors 
+
+Definition at line 55 of file motor\_\-pwm.c.
+
+Referenced by main().\index{ro_motor_pwm@{ro\_\-motor\_\-pwm}!set_motor1@{set\_\-motor1}}
+\index{set_motor1@{set\_\-motor1}!ro_motor_pwm@{ro\_\-motor\_\-pwm}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void set\_\-motor1 (uint8\_\-t {\em speed}, uint8\_\-t {\em dir})\hspace{0.3cm}{\tt  [inline]}}\label{group__ro__motor__pwm_g924cff55240daf42ea54e664f73f654e}
+
+
+Set the duty-cycle of motor 1 \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em speed}]Percentage of duty (high) level during clock cycle the maximum speed is PWM\_\-RESOLUTION (typlicalle 255), the minimum speed is 0. \item[{\em dir}]Direction of the motor. Either 0(forward) or 1(backward) \end{description}
+\end{Desc}
+
+
+Definition at line 130 of file motor\_\-pwm.c.
+
+References \_\-\_\-motor1\_\-duty, PWM\_\-RESOLUTION, and PWM\_\-SECURITY\_\-MIN\_\-DUTY.
+
+Referenced by main(), and stabilizer\_\-loop().\index{ro_motor_pwm@{ro\_\-motor\_\-pwm}!set_motor2@{set\_\-motor2}}
+\index{set_motor2@{set\_\-motor2}!ro_motor_pwm@{ro\_\-motor\_\-pwm}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void set\_\-motor2 (uint8\_\-t {\em speed}, uint8\_\-t {\em dir})\hspace{0.3cm}{\tt  [inline]}}\label{group__ro__motor__pwm_gc9b6d3d13b12f1b363f56ec624e5a7c3}
+
+
+Set the duty-cycle of motor 2 \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em speed}]Percentage of duty (high) level during clock cycle the maximum speed is PWM\_\-RESOLUTION (typlicalle 255), the minimum speed is 0. \item[{\em dir}]Direction of the motor. Either 0 (forward) or 1(backward) \end{description}
+\end{Desc}
+
+
+Definition at line 149 of file motor\_\-pwm.c.
+
+References \_\-\_\-motor2\_\-duty, PWM\_\-RESOLUTION, and PWM\_\-SECURITY\_\-MIN\_\-DUTY.
+
+Referenced by main(), and stabilizer\_\-loop().\index{ro_motor_pwm@{ro\_\-motor\_\-pwm}!set_motor_pwm_freq@{set\_\-motor\_\-pwm\_\-freq}}
+\index{set_motor_pwm_freq@{set\_\-motor\_\-pwm\_\-freq}!ro_motor_pwm@{ro\_\-motor\_\-pwm}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void set\_\-motor\_\-pwm\_\-freq (uint16\_\-t {\em hz})}\label{group__ro__motor__pwm_g10ea3668355af957bfcc30641c8bfb3e}
+
+
+Set the base frequency for the PWM signal \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em hz}]frequency in Hertz \end{description}
+\end{Desc}
+
+
+Definition at line 99 of file motor\_\-pwm.c.
+
+References \_\-\_\-motor1\_\-duty, \_\-\_\-motor2\_\-duty, PWM\_\-RESOLUTION, PWM\_\-SECURITY\_\-MAX\_\-FREQ, and SYS\_\-CLK.
+
+Referenced by main().
+
+\subsection{Variable Documentation}
+\index{ro_motor_pwm@{ro\_\-motor\_\-pwm}!__motor1_duty@{\_\-\_\-motor1\_\-duty}}
+\index{__motor1_duty@{\_\-\_\-motor1\_\-duty}!ro_motor_pwm@{ro\_\-motor\_\-pwm}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t {\bf \_\-\_\-motor1\_\-duty}}\label{group__ro__motor__pwm_g09307813c6ec0c81f05b3275bc9c4c97}
+
+
+Please dont touch these values, as they are used by the set\_\-pwm\_\-frequency-method to adjust the theshold (OCRx) values, after a update to the TOP-value (ICP) of the counter was performed 
+
+Definition at line 90 of file motor\_\-pwm.h.
+
+Referenced by monitor(), set\_\-motor1(), and set\_\-motor\_\-pwm\_\-freq().\index{ro_motor_pwm@{ro\_\-motor\_\-pwm}!__motor2_duty@{\_\-\_\-motor2\_\-duty}}
+\index{__motor2_duty@{\_\-\_\-motor2\_\-duty}!ro_motor_pwm@{ro\_\-motor\_\-pwm}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t {\bf \_\-\_\-motor2\_\-duty}}\label{group__ro__motor__pwm_g19605cf4b1535650b5440318fd48bf35}
+
+
+
+
+Definition at line 91 of file motor\_\-pwm.h.
+
+Referenced by monitor(), set\_\-motor2(), and set\_\-motor\_\-pwm\_\-freq().

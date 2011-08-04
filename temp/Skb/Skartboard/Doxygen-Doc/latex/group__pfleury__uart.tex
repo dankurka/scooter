@@ -1,0 +1,313 @@
+\section{UART Library}
+\label{group__pfleury__uart}\index{UART Library@{UART Library}}
+Interrupt UART library using the built-in UART with transmit and receive circular buffers.  
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf UART\_\-BAUD\_\-SELECT}(baud\-Rate, xtal\-Cpu)~((xtal\-Cpu)/((baud\-Rate)$\ast$16l)-1)
+\begin{CompactList}\small\item\em UART Baudrate Expression. \item\end{CompactList}\item 
+\#define {\bf UART\_\-BAUD\_\-SELECT\_\-DOUBLE\_\-SPEED}(baud\-Rate, xtal\-Cpu)~(((xtal\-Cpu)/((baud\-Rate)$\ast$8l)-1)$|$0x8000)
+\begin{CompactList}\small\item\em UART Baudrate Expression for ATmega double speed mode. \item\end{CompactList}\item 
+\#define {\bf UART\_\-RX\_\-BUFFER\_\-SIZE}~32
+\item 
+\#define {\bf UART\_\-TX\_\-BUFFER\_\-SIZE}~32
+\item 
+\#define {\bf UART\_\-FRAME\_\-ERROR}~0x0800
+\item 
+\#define {\bf UART\_\-OVERRUN\_\-ERROR}~0x0400
+\item 
+\#define {\bf UART\_\-BUFFER\_\-OVERFLOW}~0x0200
+\item 
+\#define {\bf UART\_\-NO\_\-DATA}~0x0100
+\item 
+\#define {\bf uart\_\-puts\_\-P}(\_\-\_\-s)~uart\_\-puts\_\-p(PSTR(\_\-\_\-s))
+\begin{CompactList}\small\item\em Macro to automatically put a string constant into program memory. \item\end{CompactList}\item 
+\#define {\bf uart1\_\-puts\_\-P}(\_\-\_\-s)~uart1\_\-puts\_\-p(PSTR(\_\-\_\-s))
+\begin{CompactList}\small\item\em Macro to automatically put a string constant into program memory. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void {\bf init\_\-uart} (void)
+\item 
+void {\bf uart\_\-init} (unsigned int baudrate)
+\begin{CompactList}\small\item\em Initialize UART and set baudrate. \item\end{CompactList}\item 
+unsigned int {\bf uart\_\-getc} (void)
+\begin{CompactList}\small\item\em Get received byte from ringbuffer. \item\end{CompactList}\item 
+void {\bf uart\_\-putc} (unsigned char data)
+\begin{CompactList}\small\item\em Put byte to ringbuffer for transmitting via UART. \item\end{CompactList}\item 
+void {\bf uart\_\-puts} (const char $\ast$s)
+\begin{CompactList}\small\item\em Put string to ringbuffer for transmitting via UART. \item\end{CompactList}\item 
+void {\bf uart\_\-puts\_\-p} (const char $\ast$s)
+\begin{CompactList}\small\item\em Put string from program memory to ringbuffer for transmitting via UART. \item\end{CompactList}\item 
+void {\bf uart1\_\-init} (unsigned int baudrate)
+\begin{CompactList}\small\item\em Initialize USART1 (only available on selected ATmegas). \item\end{CompactList}\item 
+unsigned int {\bf uart1\_\-getc} (void)
+\begin{CompactList}\small\item\em Get received byte of USART1 from ringbuffer. (only available on selected ATmega). \item\end{CompactList}\item 
+void {\bf uart1\_\-putc} (unsigned char data)
+\begin{CompactList}\small\item\em Put byte to ringbuffer for transmitting via USART1 (only available on selected ATmega). \item\end{CompactList}\item 
+void {\bf uart1\_\-puts} (const char $\ast$s)
+\begin{CompactList}\small\item\em Put string to ringbuffer for transmitting via USART1 (only available on selected ATmega). \item\end{CompactList}\item 
+void {\bf uart1\_\-puts\_\-p} (const char $\ast$s)
+\begin{CompactList}\small\item\em Put string from program memory to ringbuffer for transmitting via USART1 (only available on selected ATmega). \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Interrupt UART library using the built-in UART with transmit and receive circular buffers. 
+
+
+
+\begin{Code}\begin{verbatim} #include <uart.h> 
+\end{verbatim}\end{Code}
+
+
+
+This library can be used to transmit and receive data through the built in UART.
+
+An interrupt is generated when the UART has finished transmitting or receiving a byte. The interrupt handling routines use circular buffers for buffering received and transmitted data.
+
+The UART\_\-RX\_\-BUFFER\_\-SIZE and UART\_\-TX\_\-BUFFER\_\-SIZE constants define the size of the circular buffers in bytes. Note that these constants must be a power of 2. You may need to adapt this constants to your target and your application by adding CDEFS += -DUART\_\-RX\_\-BUFFER\_\-SIZE=nn -DUART\_\-RX\_\-BUFFER\_\-SIZE=nn to your Makefile.
+
+\begin{Desc}
+\item[Note:]Based on Atmel Application Note AVR306 \end{Desc}
+\begin{Desc}
+\item[Author:]Peter Fleury {\tt pfleury@gmx.ch} {\tt http://jump.to/fleury} \end{Desc}
+
+
+\subsection{Define Documentation}
+\index{pfleury_uart@{pfleury\_\-uart}!uart1_puts_P@{uart1\_\-puts\_\-P}}
+\index{uart1_puts_P@{uart1\_\-puts\_\-P}!pfleury_uart@{pfleury\_\-uart}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define uart1\_\-puts\_\-P(\_\-\_\-s)~uart1\_\-puts\_\-p(PSTR(\_\-\_\-s))}\label{group__pfleury__uart_gabd7a5b0c15611ee9ecb2873cc9ee87a}
+
+
+Macro to automatically put a string constant into program memory. 
+
+
+
+Definition at line 203 of file uart.h.
+
+Referenced by print\_\-status().\index{pfleury_uart@{pfleury\_\-uart}!UART_BAUD_SELECT@{UART\_\-BAUD\_\-SELECT}}
+\index{UART_BAUD_SELECT@{UART\_\-BAUD\_\-SELECT}!pfleury_uart@{pfleury\_\-uart}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-BAUD\_\-SELECT(baud\-Rate, xtal\-Cpu)~((xtal\-Cpu)/((baud\-Rate)$\ast$16l)-1)}\label{group__pfleury__uart_g367ff7b5de225ed936a63239ad4adb0b}
+
+
+UART Baudrate Expression. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em xtal\-Cpu}]system clock in Mhz, e.g. 4000000L for 4Mhz \item[{\em baud\-Rate}]baudrate in bps, e.g. 1200, 2400, 9600 \end{description}
+\end{Desc}
+
+
+Definition at line 72 of file uart.h.\index{pfleury_uart@{pfleury\_\-uart}!UART_BAUD_SELECT_DOUBLE_SPEED@{UART\_\-BAUD\_\-SELECT\_\-DOUBLE\_\-SPEED}}
+\index{UART_BAUD_SELECT_DOUBLE_SPEED@{UART\_\-BAUD\_\-SELECT\_\-DOUBLE\_\-SPEED}!pfleury_uart@{pfleury\_\-uart}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-BAUD\_\-SELECT\_\-DOUBLE\_\-SPEED(baud\-Rate, xtal\-Cpu)~(((xtal\-Cpu)/((baud\-Rate)$\ast$8l)-1)$|$0x8000)}\label{group__pfleury__uart_g1a02d45130520cb651ab313e69039382}
+
+
+UART Baudrate Expression for ATmega double speed mode. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em xtal\-Cpu}]system clock in Mhz, e.g. 4000000L for 4Mhz \item[{\em baud\-Rate}]baudrate in bps, e.g. 1200, 2400, 9600 \end{description}
+\end{Desc}
+
+
+Definition at line 78 of file uart.h.\index{pfleury_uart@{pfleury\_\-uart}!UART_BUFFER_OVERFLOW@{UART\_\-BUFFER\_\-OVERFLOW}}
+\index{UART_BUFFER_OVERFLOW@{UART\_\-BUFFER\_\-OVERFLOW}!pfleury_uart@{pfleury\_\-uart}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-BUFFER\_\-OVERFLOW~0x0200}\label{group__pfleury__uart_g94758f3dad6864703b7417d3e40f11df}
+
+
+
+
+Definition at line 100 of file uart.h.\index{pfleury_uart@{pfleury\_\-uart}!UART_FRAME_ERROR@{UART\_\-FRAME\_\-ERROR}}
+\index{UART_FRAME_ERROR@{UART\_\-FRAME\_\-ERROR}!pfleury_uart@{pfleury\_\-uart}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-FRAME\_\-ERROR~0x0800}\label{group__pfleury__uart_gbcdb1041d763560cd8f8e722370dfd37}
+
+
+
+
+Definition at line 98 of file uart.h.\index{pfleury_uart@{pfleury\_\-uart}!UART_NO_DATA@{UART\_\-NO\_\-DATA}}
+\index{UART_NO_DATA@{UART\_\-NO\_\-DATA}!pfleury_uart@{pfleury\_\-uart}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-NO\_\-DATA~0x0100}\label{group__pfleury__uart_g77ba544d423ff42d400220a05303f268}
+
+
+
+
+Definition at line 101 of file uart.h.\index{pfleury_uart@{pfleury\_\-uart}!UART_OVERRUN_ERROR@{UART\_\-OVERRUN\_\-ERROR}}
+\index{UART_OVERRUN_ERROR@{UART\_\-OVERRUN\_\-ERROR}!pfleury_uart@{pfleury\_\-uart}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-OVERRUN\_\-ERROR~0x0400}\label{group__pfleury__uart_g3183177e3613d8785d8cc8516931beb6}
+
+
+
+
+Definition at line 99 of file uart.h.\index{pfleury_uart@{pfleury\_\-uart}!uart_puts_P@{uart\_\-puts\_\-P}}
+\index{uart_puts_P@{uart\_\-puts\_\-P}!pfleury_uart@{pfleury\_\-uart}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define uart\_\-puts\_\-P(\_\-\_\-s)~uart\_\-puts\_\-p(PSTR(\_\-\_\-s))}\label{group__pfleury__uart_ge9e143569df2285379bc55f9f5595bf9}
+
+
+Macro to automatically put a string constant into program memory. 
+
+
+
+Definition at line 188 of file uart.h.
+
+Referenced by main(), monitor(), and print\_\-status().\index{pfleury_uart@{pfleury\_\-uart}!UART_RX_BUFFER_SIZE@{UART\_\-RX\_\-BUFFER\_\-SIZE}}
+\index{UART_RX_BUFFER_SIZE@{UART\_\-RX\_\-BUFFER\_\-SIZE}!pfleury_uart@{pfleury\_\-uart}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-RX\_\-BUFFER\_\-SIZE~32}\label{group__pfleury__uart_g5bdd6772c246436bb14377095de79b31}
+
+
+Size of the circular receive buffer, must be power of 2 
+
+Definition at line 83 of file uart.h.\index{pfleury_uart@{pfleury\_\-uart}!UART_TX_BUFFER_SIZE@{UART\_\-TX\_\-BUFFER\_\-SIZE}}
+\index{UART_TX_BUFFER_SIZE@{UART\_\-TX\_\-BUFFER\_\-SIZE}!pfleury_uart@{pfleury\_\-uart}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-TX\_\-BUFFER\_\-SIZE~32}\label{group__pfleury__uart_g05f5d709605c6317c97e4974bec3402a}
+
+
+Size of the circular transmit buffer, must be power of 2 
+
+Definition at line 87 of file uart.h.
+
+\subsection{Function Documentation}
+\index{pfleury_uart@{pfleury\_\-uart}!init_uart@{init\_\-uart}}
+\index{init_uart@{init\_\-uart}!pfleury_uart@{pfleury\_\-uart}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void init\_\-uart (void)}\label{group__pfleury__uart_gc7b3df0fa68526d64c732d5f916e34b1}
+
+
+Initialize the UART-Interfaces of Scooter controller Board \begin{Desc}
+\item[Returns:]none \end{Desc}
+
+
+Referenced by main().\index{pfleury_uart@{pfleury\_\-uart}!uart1_getc@{uart1\_\-getc}}
+\index{uart1_getc@{uart1\_\-getc}!pfleury_uart@{pfleury\_\-uart}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}unsigned int uart1\_\-getc (void)}\label{group__pfleury__uart_geb1405c641e5bc9b7224018f5e8d90de}
+
+
+Get received byte of USART1 from ringbuffer. (only available on selected ATmega). 
+
+\begin{Desc}
+\item[See also:]\doxyref{uart\_\-getc}{p.}{group__pfleury__uart_gefaab30a8338ec46a6be35b99b1b4f09} \end{Desc}
+\index{pfleury_uart@{pfleury\_\-uart}!uart1_init@{uart1\_\-init}}
+\index{uart1_init@{uart1\_\-init}!pfleury_uart@{pfleury\_\-uart}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void uart1\_\-init (unsigned int {\em baudrate})}\label{group__pfleury__uart_g4db697cb5469fd70e794fa7df73a6d6a}
+
+
+Initialize USART1 (only available on selected ATmegas). 
+
+\begin{Desc}
+\item[See also:]\doxyref{uart\_\-init}{p.}{group__pfleury__uart_gc19a76bb7d446125734a67f9f4b68991} \end{Desc}
+\index{pfleury_uart@{pfleury\_\-uart}!uart1_putc@{uart1\_\-putc}}
+\index{uart1_putc@{uart1\_\-putc}!pfleury_uart@{pfleury\_\-uart}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void uart1\_\-putc (unsigned char {\em data})}\label{group__pfleury__uart_gb465f689d197fadfbacc374fc9411154}
+
+
+Put byte to ringbuffer for transmitting via USART1 (only available on selected ATmega). 
+
+\begin{Desc}
+\item[See also:]\doxyref{uart\_\-putc}{p.}{group__pfleury__uart_gd975221bc08b901e4c7ad69f9c9a97e2} \end{Desc}
+\index{pfleury_uart@{pfleury\_\-uart}!uart1_puts@{uart1\_\-puts}}
+\index{uart1_puts@{uart1\_\-puts}!pfleury_uart@{pfleury\_\-uart}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void uart1\_\-puts (const char $\ast$ {\em s})}\label{group__pfleury__uart_g5568f8f3913b218fd4d0346af78831b2}
+
+
+Put string to ringbuffer for transmitting via USART1 (only available on selected ATmega). 
+
+\begin{Desc}
+\item[See also:]\doxyref{uart\_\-puts}{p.}{group__pfleury__uart_ge52facc0a56086a365bb0018160d8d71} \end{Desc}
+\index{pfleury_uart@{pfleury\_\-uart}!uart1_puts_p@{uart1\_\-puts\_\-p}}
+\index{uart1_puts_p@{uart1\_\-puts\_\-p}!pfleury_uart@{pfleury\_\-uart}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void uart1\_\-puts\_\-p (const char $\ast$ {\em s})}\label{group__pfleury__uart_g1e8074d0a2d5922601c5db2f9777ba79}
+
+
+Put string from program memory to ringbuffer for transmitting via USART1 (only available on selected ATmega). 
+
+\begin{Desc}
+\item[See also:]\doxyref{uart\_\-puts\_\-p}{p.}{group__pfleury__uart_g6d78b6744db6232f52b4616402036c2f} \end{Desc}
+\index{pfleury_uart@{pfleury\_\-uart}!uart_getc@{uart\_\-getc}}
+\index{uart_getc@{uart\_\-getc}!pfleury_uart@{pfleury\_\-uart}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}unsigned int uart\_\-getc (void)}\label{group__pfleury__uart_gefaab30a8338ec46a6be35b99b1b4f09}
+
+
+Get received byte from ringbuffer. 
+
+Returns in the lower byte the received character and in the higher byte the last receive error. UART\_\-NO\_\-DATA is returned when no data is available.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em void}]\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]lower byte: received byte from ringbuffer 
+
+higher byte: last receive status\begin{itemize}
+\item {\bf 0} successfully received data from UART\item {\bf UART\_\-NO\_\-DATA} \par
+no receive data available\item {\bf UART\_\-BUFFER\_\-OVERFLOW} \par
+Receive ringbuffer overflow. We are not reading the receive buffer fast enough, one or more received character have been dropped\item {\bf UART\_\-OVERRUN\_\-ERROR} \par
+Overrun condition by UART. A character already present in the UART UDR register was not read by the interrupt handler before the next character arrived, one or more received characters have been dropped.\item {\bf UART\_\-FRAME\_\-ERROR} \par
+Framing Error by UART \end{itemize}
+\end{Desc}
+\index{pfleury_uart@{pfleury\_\-uart}!uart_init@{uart\_\-init}}
+\index{uart_init@{uart\_\-init}!pfleury_uart@{pfleury\_\-uart}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void uart\_\-init (unsigned int {\em baudrate})}\label{group__pfleury__uart_gc19a76bb7d446125734a67f9f4b68991}
+
+
+Initialize UART and set baudrate. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em baudrate}]Specify baudrate using macro \doxyref{UART\_\-BAUD\_\-SELECT()}{p.}{group__pfleury__uart_g367ff7b5de225ed936a63239ad4adb0b} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]none \end{Desc}
+\index{pfleury_uart@{pfleury\_\-uart}!uart_putc@{uart\_\-putc}}
+\index{uart_putc@{uart\_\-putc}!pfleury_uart@{pfleury\_\-uart}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void uart\_\-putc (unsigned char {\em data})}\label{group__pfleury__uart_gd975221bc08b901e4c7ad69f9c9a97e2}
+
+
+Put byte to ringbuffer for transmitting via UART. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em data}]byte to be transmitted \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]none \end{Desc}
+\index{pfleury_uart@{pfleury\_\-uart}!uart_puts@{uart\_\-puts}}
+\index{uart_puts@{uart\_\-puts}!pfleury_uart@{pfleury\_\-uart}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void uart\_\-puts (const char $\ast$ {\em s})}\label{group__pfleury__uart_ge52facc0a56086a365bb0018160d8d71}
+
+
+Put string to ringbuffer for transmitting via UART. 
+
+The string is buffered by the uart library in a circular buffer and one character at a time is transmitted to the UART using interrupts. Blocks if it can not write the whole string into the circular buffer.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em s}]string to be transmitted \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]none \end{Desc}
+
+
+Referenced by cca\_\-modus(), monitor(), print\_\-all\_\-adc(), and stabilizer\_\-loop().\index{pfleury_uart@{pfleury\_\-uart}!uart_puts_p@{uart\_\-puts\_\-p}}
+\index{uart_puts_p@{uart\_\-puts\_\-p}!pfleury_uart@{pfleury\_\-uart}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void uart\_\-puts\_\-p (const char $\ast$ {\em s})}\label{group__pfleury__uart_g6d78b6744db6232f52b4616402036c2f}
+
+
+Put string from program memory to ringbuffer for transmitting via UART. 
+
+The string is buffered by the uart library in a circular buffer and one character at a time is transmitted to the UART using interrupts. Blocks if it can not write the whole string into the circular buffer.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em s}]program memory string to be transmitted \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]none \end{Desc}
+\begin{Desc}
+\item[See also:]\doxyref{uart\_\-puts\_\-P}{p.}{group__pfleury__uart_ge9e143569df2285379bc55f9f5595bf9} \end{Desc}

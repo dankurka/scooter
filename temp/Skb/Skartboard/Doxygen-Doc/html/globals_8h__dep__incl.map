@@ -1,0 +1,6 @@
+base referer
+rect $accel__capture_8c.html 140,6 265,30
+rect $gyro__spi_8c.html 157,54 248,78
+rect $main_8c.html 169,102 236,126
+rect $monitor_8c.html 160,150 245,174
+rect $stabilizer_8c.html 156,198 249,222

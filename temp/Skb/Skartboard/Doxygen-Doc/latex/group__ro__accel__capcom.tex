@@ -1,0 +1,51 @@
+\section{Accelerometer Capture'n'Compare}
+\label{group__ro__accel__capcom}\index{Accelerometer Capture'n'Compare@{Accelerometer Capture'n'Compare}}
+Code for reading the Accelerometer.  
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void {\bf init\_\-accel\_\-capture} ()
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Code for reading the Accelerometer. 
+
+
+
+\begin{Code}\begin{verbatim} #include <accel_capcom.h> 
+\end{verbatim}\end{Code}
+
+
+
+\begin{Desc}
+\item[Note:]Based on Atmel Datasheet for Atmega128, Nov. 2006 \end{Desc}
+\begin{Desc}
+\item[Author:]Rainer Ostendorf \end{Desc}
+
+
+\subsection{Function Documentation}
+\index{ro_accel_capcom@{ro\_\-accel\_\-capcom}!init_accel_capture@{init\_\-accel\_\-capture}}
+\index{init_accel_capture@{init\_\-accel\_\-capture}!ro_accel_capcom@{ro\_\-accel\_\-capcom}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void init\_\-accel\_\-capture ()}\label{group__ro__accel__capcom_g28ee0768f78e74c59ad6fd22ac86cab6}
+
+
+Initalize the Capture of Events on ICP3. Configure Timer 3 to generate an interrupt on each falling flank of ICP3 and save the current timer-value to a buffer. 
+
+Set Timer3's Control Register A
+
+7,6: COM3A1, COM3A0 = 00 -$>$ Normal port operation of OC3A 5,4: COM3B1, COM3B1 = 00 -$>$ Normal port operation of OC3B 3,2: COM3C1, COM3C1 = 00 -$>$ Normal port operation of OC3C 1,0: WGM31, WGM30 = 00 -$>$ Normal mode of operation for counter, no waveform generation
+
+Set Timer3's Control Register B
+
+7: ICNC3 = 0 -$>$ no noise cancellation 6: ICES3 = 1 -$>$ trigger on rising edge of ICP3 4,3: WGM33, WGM32 = 00 -$>$ no waveform generation 2,1,0: CS32, CS31,CS30 = 0,0,1 -$>$ no prescaling, timer runs with full CPU speed
+
+Set Timer extended IRQ Mask Register
+
+7,6 Reserved = 0 5: TICIE3 = 1 Enable Timer 3 capture interrupt 4: OCIE3A = 0 disable Compare\-Match Interrupt A 3: OCIE3B = 0 disable Compare\-Match Interrupt B 2: TOIE3 = 0 disable Timer3 overflow interrupt 1: OCIE3C = 0 diable Compare\-Match Interrupt C 0: OCIE1C = dont change - belong to timer 1! 
+
+Definition at line 63 of file accel\_\-capture.c.
+
+References accl\_\-high\_\-idx, and accl\_\-low\_\-idx.
+
+Referenced by main().

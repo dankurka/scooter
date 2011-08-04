@@ -1,0 +1,1 @@
+avrdude -p atmega128 -c stk200 -U flash:w:Debug/test.hex
